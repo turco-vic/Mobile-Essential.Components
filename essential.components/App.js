@@ -1,12 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Hello World!</Text>
-      <Image source={require("./assets/img.png")} style={styles.image}/>
-      <Text style={styles.text}>RJ and Hammy</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Hello World!</Text>
+      </View>
+      
+      <View style={styles.content}>
+        <Image source={require("./assets/img.png")} style={styles.image}/>
+        <Text style={styles.text}>RJ and Hammy</Text>
+      </View>
     </View>
   );
 }
@@ -14,32 +19,46 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'white',
   },
-
+  
   header: {
     backgroundColor: 'green',
-    fontSize: 70,
-    fontWeight: 'bold',
-    color: 'white',
+    paddingTop: StatusBar.currentHeight,
     width: '100%',
-    height: 100,
+    height: 50 + StatusBar.currentHeight,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+  },
+
+  headerText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: 'white',
     textAlign: 'center',
   },
 
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50 + StatusBar.currentHeight,
+  },
+
   image: {
-    width: 500,
-    height: 500,
-    borderRadius: 25,
+    width: 125,
+    height: 125,
+    borderRadius: 5,
     margin: 20,
   },
 
   text: {
-    fontSize: 50,
+    fontSize: 20,
     color: 'green',
     fontWeight: 'bold',
   },
